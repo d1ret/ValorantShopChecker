@@ -1,0 +1,64 @@
+﻿<Window x:Class="CheckShopApp.Shop"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CheckShopApp"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        Height="359"
+        Width="580"
+    RenderOptions.BitmapScalingMode="HighQuality" 
+    ResizeMode="CanMinimize"
+    AllowsTransparency="True"
+    WindowStyle="None"
+    Background="Transparent"
+    WindowStartupLocation="CenterScreen"
+    WindowState="Normal" MouseDown="Window_MouseDown"
+    >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="328*"/>
+            <ColumnDefinition Width="23*"/>
+            <ColumnDefinition Width="26*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="29*"/>
+            <RowDefinition Height="330*"/>
+        </Grid.RowDefinitions>
+        <Border Background="#16171B"
+                    CornerRadius="6,6,0,0" Grid.ColumnSpan="3"/>
+        <Label Content="Valorant shop checker by d1ret" Grid.ColumnSpan="4" Margin="0,4,184,-4" Foreground="White" FontFamily="Quicksand" FontWeight="Bold" FontSize="8"/>
+        <Border
+        Background="#191A1F" Grid.Row="1" Grid.ColumnSpan="3">
+            <Grid>
+                <Border CornerRadius="11" Background="#FF1F1F23" Height="90" Margin="0,0,294,0" VerticalAlignment="Center" HorizontalAlignment="Right" Width="258">
+                    <Grid Margin="0,0,0,10">
+                        <Image x:Name="imgTest1" Margin="12,8,12,8" />
+                        <Label x:Name="textTest1" Content="" HorizontalAlignment="Left" Margin="3,57,0,0" VerticalAlignment="Top" Foreground="White" Height="26" Width="56" FontSize="14" FontFamily="Quicksand" FontWeight="Bold"/>
+                    </Grid>
+                </Border>
+                <Border CornerRadius="11" Background="#FF1F1F23" Height="90" Margin="0,0,21,0" VerticalAlignment="Center" HorizontalAlignment="Right" Width="258">
+                    <Grid Margin="0,0,0,10">
+                        <Image x:Name="imgTest2" Margin="12,8,12,8"/>
+                        <Label x:Name="textTest2" Content="" HorizontalAlignment="Left" Margin="4,58,0,0" VerticalAlignment="Top" Foreground="White" Height="26" Width="56" FontSize="14" FontFamily="Quicksand" FontWeight="Bold"/>
+                    </Grid>
+                </Border>
+                <Border CornerRadius="11" Background="#FF1F1F23" Margin="0,10,21,0" Height="90" VerticalAlignment="Top" HorizontalAlignment="Right" Width="258">
+                    <Grid Margin="0,10,0,0">
+                        <Image x:Name="imgTest3" Margin="12,8,12,8"/>
+                        <Label x:Name="textTest3" Content="" HorizontalAlignment="Left" Margin="3,54,0,0" VerticalAlignment="Top" Foreground="White" Height="26" Width="56" FontSize="14" FontFamily="Quicksand" FontWeight="Bold"/>
+                    </Grid>
+                </Border>
+                <Border CornerRadius="11" Background="#FF1F1F23" Height="90" Margin="0,10,294,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="258">
+                    <Grid Margin="0,10,0,0">
+                        <Image x:Name="imgTest4" Margin="12,8,12,8"/>
+                        <Label x:Name="textTest4" Content="" HorizontalAlignment="Left" Margin="3,54,0,0" VerticalAlignment="Top" Foreground="White" Height="26" Width="56" FontSize="14" FontFamily="Quicksand" FontWeight="Bold"/>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+        <Button x:Name="xButton" Content="❌" Margin="2,4,6,4" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Style="{DynamicResource RightButtonStyle}" Cursor="Hand" MouseEnter="X_Enter" MouseLeave="X_Leave" Grid.Column="2" Click="xButton_Click"/>
+        <Button x:Name="minusButton" Content="➖" Margin="3,4,1,4" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Style="{DynamicResource RightButtonStyle}" Cursor="Hand" MouseEnter="_Enter" MouseLeave="_Leave" Grid.Column="1" Click="minusButton_Click"/>
+    </Grid>
+</Window>

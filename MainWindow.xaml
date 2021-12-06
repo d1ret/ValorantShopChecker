@@ -1,0 +1,61 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CheckShopApp"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" xmlns:hc="https://handyorg.github.io/handycontrol" xmlns:syncfusion="http://schemas.syncfusion.com/wpf" x:Class="CheckShopApp.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        Height="359"
+        Width="368"
+    RenderOptions.BitmapScalingMode="HighQuality" 
+    ResizeMode="CanMinimize"
+    AllowsTransparency="True"
+    WindowStyle="None"
+    Background="Transparent"
+    WindowStartupLocation="CenterScreen"
+    WindowState="Normal" MouseDown="Window_MouseDown"
+    >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80*"/>
+            <ColumnDefinition Width="241*"/>
+            <ColumnDefinition Width="22*"/>
+            <ColumnDefinition Width="25*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="29*"/>
+            <RowDefinition Height="330*"/>
+        </Grid.RowDefinitions>
+        <Border Background="#16171B"
+                    CornerRadius="8,8,0,0" Grid.ColumnSpan="4">
+            <Label Content="Valorant shop checker by d1ret" Grid.ColumnSpan="4" Margin="0,4,184,-4" Foreground="White" FontFamily="Quicksand" FontWeight="Bold" FontSize="8"/>
+        </Border>
+        <Border
+        Background="#191A1F" CornerRadius="0,0,8,8" Grid.Row="1" Grid.ColumnSpan="4">
+            <Grid>
+
+                <Border x:Name="PasswordBorder" Background="#FF26292F"
+                    CornerRadius="6" Margin="0,184,0,120"  HorizontalAlignment="Center" Width="246" BorderBrush="#FFEF0000" BorderThickness="0">
+                    <PasswordBox x:Name="boxPassword" BorderThickness="0"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Margin="2,6,2,5" SelectionBrush="White" SelectionTextBrush="White" SelectionOpacity="0" FontFamily="Quicksand" FontWeight="Bold" FontSize="12" CaretBrush="White" Height="16"/>
+                </Border>
+                <Border x:Name="loginBorder" Background="#FF26292F"
+                    CornerRadius="6" Margin="0,104,0,200" HorizontalAlignment="Center" Width="246" BorderBrush="#FFEF0000" BorderThickness="0" >
+                    <TextBox x:Name="boxUsername" BorderThickness="0"  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Margin="2,6,2,4" SelectionBrush="White" SelectionTextBrush="White" SelectionOpacity="0" FontFamily="Quicksand" FontWeight="Bold" FontSize="12" CaretBrush="White"/>
+                </Border>
+                <Label Content="Login" HorizontalAlignment="Center" Margin="0,62,0,0" VerticalAlignment="Top" Width="54" Foreground="White" Background="{x:Null}" Height="36" FontSize="18"/>
+                <Label Content="Password" HorizontalAlignment="Center" Margin="0,144,0,0" VerticalAlignment="Top" Width="84" Foreground="White" Background="{x:Null}" Height="36" FontSize="18"/>
+                <Button x:Name="SignInButton" Content="Sign In" HorizontalAlignment="Left" Margin="61,227,0,0" VerticalAlignment="Top" Width="127" Height="28" Style="{StaticResource RoundButton}" Background="#3D50FA" FontFamily="Quicksand" FontWeight="Bold" Cursor="Hand" MouseEnter="SignInMouseEnter" MouseLeave="SignInMouseLeave" Click="SignInClickButton"  />
+                <ComboBox x:Name="RegionBox" HorizontalAlignment="Left" Margin="198,227,0,0" VerticalAlignment="Top" Width="109" Height="28" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Style="{DynamicResource ComboBoxFlatStyle}">
+                    <TextBlock>EU</TextBlock>
+                    <TextBlock>NA</TextBlock>
+                    <TextBlock>AP</TextBlock>
+                    <TextBlock>KR</TextBlock>
+                </ComboBox>
+            </Grid>
+        </Border>
+        <Button x:Name="xButton" Content="❌" Margin="2,4,6,4" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Style="{DynamicResource RightButtonStyle}" Cursor="Hand" MouseEnter="X_Enter" MouseLeave="X_Leave" Grid.Column="3" Click="xButton_Click"/>
+        <Button x:Name="minusButton" Content="➖" Margin="3,4,1,4" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Style="{DynamicResource RightButtonStyle}" Cursor="Hand" MouseEnter="_Enter" MouseLeave="_Leave" Grid.Column="2" Click="minusButton_Click"/>
+    </Grid>
+</Window>
