@@ -49,7 +49,7 @@ namespace CheckShopApp
                 }
                 if (region == "")
                 {
-                    MessageBox.Show("Вы забыли выбрать Region");
+                    MessageBox.Show("Choose Region");
                 }
 
                 if (Login != "" && Password != "" && region != "")
