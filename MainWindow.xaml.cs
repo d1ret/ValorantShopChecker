@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -23,16 +24,11 @@ namespace CheckShopApp
         {
             InitializeComponent();
         }
-        public string Login = null;
-        string Password = null;
-        string source = null;
-        string region = null;
-        private async void SignInClickButton(object sender, RoutedEventArgs e)
+        private  void SignInClickButton(object sender, RoutedEventArgs e)
         {
-            Dispatcher.Invoke(() => Login = boxUsername.Text);
-            Dispatcher.Invoke(() => Password = boxPassword.Password);
-            Dispatcher.Invoke(() => region = RegionBox.Text);
-            //await Task.Run(() => GetShop());
+            var Login = boxUsername.Text;
+            var Password = boxPassword.Password;
+            var region = RegionBox.Text;
             try
             {
                 if (Login == "")
@@ -58,46 +54,31 @@ namespace CheckShopApp
 
                 if (Login != "" && Password != "" && region != "")
                 {
-
                     Auth au = Auth.Login(Login, Password, RegionBox.Text);
                     if (au.EntitlementToken != null)
                     {
-                        Storefront SkinImage = Storefront.GetOffers(au);
-                        string skin1 = SkinImage.SkinsPanelLayout.SingleItemOffers[0];
-                        string skin2 = SkinImage.SkinsPanelLayout.SingleItemOffers[1];
-                        string skin3 = SkinImage.SkinsPanelLayout.SingleItemOffers[2];
-                        string skin4 = SkinImage.SkinsPanelLayout.SingleItemOffers[3];
-                        GetImage img = GetImage.GetOffers(skin1);
-                        GetImage img2 = GetImage.GetOffers(skin2);
-                        GetImage img3 = GetImage.GetOffers(skin3);
-                        GetImage img4 = GetImage.GetOffers(skin4);
                         Shop f2 = new Shop();
-                        Properties.Settings.Default.version++;
-                        f2.imgTest1.Source = new BitmapImage(new Uri(img.skinPNG));
-                        f2.imgTest2.Source = new BitmapImage(new Uri(img2.skinPNG));
-                        f2.imgTest3.Source = new BitmapImage(new Uri(img3.skinPNG));
-                        f2.imgTest4.Source = new BitmapImage(new Uri(img4.skinPNG));
-                        StoreOffers SkinCosts = StoreOffers.GetOffers(au);
-                        int count = SkinCosts.Offers.Count;
-                        for (int i = 0; i < count; i++)
+                        var png = new[] { f2.imgTest1, f2.imgTest2, f2.imgTest3, f2.imgTest4 };
+                        var text = new[] { f2.textTest1, f2.textTest2, f2.textTest3, f2.textTest4 };
+                        for (int i=0;i<4;i++)
                         {
-                            if (SkinCosts.Offers[i].OfferID == skin1)
+                            Storefront SkinImage = Storefront.GetOffers(au);
+                            string skin = SkinImage.SkinsPanelLayout.SingleItemOffers[i];
+                            GetImage img = GetImage.GetOffers(skin);
+                            var pngs = png[i];
+                            pngs.Source = new BitmapImage(new Uri(img.skinPNG));
+                            StoreOffers SkinCosts = StoreOffers.GetOffers(au);
+                            int count = SkinCosts.Offers.Count;
+                            for (int d = 0; d < count; d++)
                             {
-                                f2.textTest1.Content = SkinCosts.Offers[i].Cost.ValorantPoints;
-                            }
-                            if (SkinCosts.Offers[i].OfferID == skin2)
-                            {
-                                f2.textTest2.Content = SkinCosts.Offers[i].Cost.ValorantPoints;
-                            }
-                            if (SkinCosts.Offers[i].OfferID == skin3)
-                            {
-                                f2.textTest3.Content = SkinCosts.Offers[i].Cost.ValorantPoints;
-                            }
-                            if (SkinCosts.Offers[i].OfferID == skin4)
-                            {
-                                f2.textTest4.Content = SkinCosts.Offers[i].Cost.ValorantPoints;
+                                if (SkinCosts.Offers[d].OfferID == skin)
+                                {
+                                    var texts = text[i];
+                                    texts.Content = SkinCosts.Offers[d].Cost.ValorantPoints;
+                                }
                             }
                         }
+                        Properties.Settings.Default.version++;
                         if (Properties.Settings.Default.version == 1)
                         {
                             Close();
@@ -108,8 +89,6 @@ namespace CheckShopApp
                     {
                         MessageBox.Show("Wrong username or password"); 
                     }
-
-
                 }
             }
             catch (Exception ex)
@@ -117,12 +96,10 @@ namespace CheckShopApp
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void xButton_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
-
         private void minusButton_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
