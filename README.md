@@ -1,4 +1,4 @@
-# VSC (Valorant Shop Checker)
+# Valorant Shop Checker
 Tool for check shop items without entering the game
 
 <img src="https://i.imgur.com/Ce4las7.png">
